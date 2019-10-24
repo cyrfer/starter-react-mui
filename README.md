@@ -4,7 +4,7 @@ Adds to CRA:
 - react router, for nav
 - material ui, for styles
 
-<img src="./home-page.png" alt="home page" width="200"/>
+<img src="./docs/home-page.png" alt="home page" width="200"/>
 
 ## Recipe To create yourself
 
