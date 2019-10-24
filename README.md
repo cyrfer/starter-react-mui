@@ -1,3 +1,21 @@
+# Starter
+
+## Recipe To create yourself
+
+Grab dependencies:
+- `npm i -S @material-ui/core @material-ui/icons typeface-roboto react-router-dom`
+
+Make components:
+- Home (page)
+- Layout
+- Header
+- SideMenu
+- Modify `App` comonent to use Router, Layout, and ThemeProvider
+
+<hr/>
+
+## Credits...
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
