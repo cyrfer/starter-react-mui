@@ -32,7 +32,6 @@ function App() {
       })
 
       window.theme = createdTheme
-      console.log('theme', createdTheme)
       return createdTheme
     },
     [prefersDarkMode],
