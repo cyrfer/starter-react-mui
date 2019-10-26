@@ -19,13 +19,14 @@ cd your-app-name && npm install
 # Run local server
 npm start
 ```
-
+<p>
 <img src="./docs/home-signup.png" alt="home page signup" width="200"/>
 <img src="./docs/signup.png" alt="sign up" width="200"/>
 <img src="./docs/home-dashboard.png" alt="home page dashboard" width="200"/>
 <img src="./docs/drawer.png" alt="drawer" width="200"/>
 <img src="./docs/home-signin.png" alt="home page signin" width="200"/>
 <img src="./docs/signin.png" alt="signin" width="200"/>
+</p>
 
 Adds to CRA:
 - react router, for nav
