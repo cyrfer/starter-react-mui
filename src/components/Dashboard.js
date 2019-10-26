@@ -13,7 +13,9 @@ const Product = ({data}) => {
 
   return (
 <Grid item xs={12} sm={6} lg={4} container direction="row" className={classes.row}>
-  <div className={classes.imageBox}></div>
+  <div className={classes.imageBox}>
+    <img src={data.image} alt={data.name} />
+  </div>
   <div className={classes.details}>
     <Typography variant="h5" >{data.name}</Typography>
     <Typography variant="body1">{data.description}</Typography>
@@ -66,8 +68,8 @@ const Dashboard = () => {
   }, [dispatch])
 
   return (
-<Grid container direction="column" alignItems="center" justify="flex-start">
-  <Grid item> <Typography variant="h4" align="center">Products</Typography> </Grid>
+<Grid wrap="nowrap" container direction="column" alignItems="center" justify="flex-start">
+  <Grid item xs={12}> <Typography variant="h4" align="center">Products</Typography> </Grid>
   <ProductList products={products} />
 </Grid>
   )
