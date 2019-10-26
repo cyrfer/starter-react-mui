@@ -16,6 +16,22 @@ const useStyles = makeStyles(theme => {
       flexWrap: 'nowrap',
       height: '100%',
       padding: `0 ${theme.spacing(2)}px`,
+    },
+    // resorting to css breakpoints because this was not working:
+    // <Grid xs={12} sm={6} md={4} lg={3}>....</Grid>
+    form: {
+      [theme.breakpoints.up('xs')]: {
+        width: '100%',
+      },
+      [theme.breakpoints.up('sm')]: {
+        width: `${100*6/12}%`,
+      },
+      [theme.breakpoints.up('md')]: {
+        width: `${100*4/12}%`,
+      },
+      [theme.breakpoints.up('lg')]: {
+        width: `${100*3/12}%`,
+      },
     }
   }
 })
@@ -56,10 +72,12 @@ const SignupPage = () => {
 <Grid container className={classes.root} direction="column" justify="center" alignItems="center">
   <Typography variant="h2" align="center">WELCOME BACK</Typography>
   <Typography variant="body1">We've been expecting you</Typography>
-  <Form 
-    attributes={config.user.signInAttributes}
-    onChange={handleChange}
-    onSubmit={onSubmit(dispatch, history, '/')} />
+  <Grid item className={classes.form}>
+    <Form 
+      attributes={config.user.signInAttributes}
+      onChange={handleChange}
+      onSubmit={onSubmit(dispatch, history, '/')} />
+  </Grid>
 </Grid>
   )
 }
