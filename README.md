@@ -1,21 +1,50 @@
 # Starter
+Save time by re-using boiler plate, rather than re-writing it.
+
+## TODO:
+- follow steps in MUI that shows how to reduce the bundle size
+
+## Quick Run
+
+```bash
+# Download
+## via ssh
+git clone git@github.com:cyrfer/starter-react-mui.git your-app-name
+## or via https
+https://github.com/cyrfer/starter-react-mui.git your-app-name`
+
+# Install dependencies
+cd your-app-name && npm install
+
+# Run local server
+npm start
+```
+
+<img src="./docs/home-signup.png" alt="home page signup" width="200"/>
+<img src="./docs/signup.png" alt="sign up" width="200"/>
+<img src="./docs/home-dashboard.png" alt="home page dashboard" width="200"/>
+<img src="./docs/drawer.png" alt="drawer" width="200"/>
+<img src="./docs/home-signin.png" alt="home page signin" width="200"/>
+<img src="./docs/signin.png" alt="signin" width="200"/>
 
 Adds to CRA:
 - react router, for nav
 - material ui, for styles
+- deepdown, simplify working with nested objects
 
-<img src="./docs/home-page.png" alt="home page" width="200"/>
 
 ## Recipe To create yourself
 
 Grab dependencies:
 - `npm i -S @material-ui/core @material-ui/icons typeface-roboto react-router-dom`
+- `npm i -S deepdown`
 
 Make components:
 - Home (page)
 - Layout
 - Header
 - SideMenu
+- State
 - Modify `App` comonent to use Router, Layout, and ThemeProvider
 
 <hr/>

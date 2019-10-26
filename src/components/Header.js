@@ -1,24 +1,25 @@
 import React from 'react'
-
-import { Link } from "react-router-dom"
-
-import { SwipeableDrawer, } from '@material-ui/core'
+import { Link, } from "react-router-dom"
 
 import MenuIcon from '@material-ui/icons/Menu'
-import AccountCircle from '@material-ui/icons/AccountCircle'
+
+import { Avatar, } from '@material-ui/core'
+import { makeStyles, } from '@material-ui/core/styles'
 
 import {
   AppBar,
+  Button,
   IconButton,
+  SwipeableDrawer,
   Toolbar,
-  Typography,
 } from '@material-ui/core'
 
 import SideMenu from './SideMenu'
+import Brand from './Brand'
 
-import {
-  makeStyles,
-} from '@material-ui/core/styles'
+import { useContextState } from './State'
+import { selectUser, selectUserNameFromUser, } from '../state/selections'
+import { drillDown } from 'deepdown'
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -35,7 +36,6 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
     textDecoration: 'none',
     color: theme.palette.primary.contrastText,
-    display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
@@ -45,8 +45,35 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const Header = ({title}) => {
+const useStylesProfile = makeStyles(theme => ({
+  avatar: {
+    textTransform: 'uppercase',
+    color: theme.palette.secondary.contrastText,
+    backgroundColor: theme.palette.secondary.dark,
+  },
+}))
+
+const ProfileIcon = () => {
+  const classes = useStylesProfile()
+  const [state,] = useContextState()
+  const user = drillDown(state, selectUser)
+  const nameAttr = drillDown(user, selectUserNameFromUser)
+
+  return (
+    <Avatar className={classes.avatar}>{nameAttr ? nameAttr[0] : '?'}</Avatar>
+  )
+}
+
+const Login = () => {
+  return (
+<Button component={Link} to={'/signin'} variant="contained" color="secondary">SIGN IN</Button>
+  )
+}
+
+const Header = () => {
   const classes = useStyles()
+  const [contextState, /*dispatch*/] = useContextState()
+  const user = drillDown(contextState, selectUser)
 
   const [state, setState] = React.useState({
     drawer: false,
@@ -67,11 +94,9 @@ const Header = ({title}) => {
       <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="open drawer" onClick={toggleDrawer(true)}>
           <MenuIcon />
       </IconButton>
-      <Typography className={classes.title} variant="h6" noWrap component={Link} to={'/'} >{title}</Typography>
+      <Brand />
       <div className={classes.rightMenuIcons}>
-      <IconButton aria-label="account of current user" aria-controls="primary-search-account-menu" aria-haspopup="true" color="inherit">
-          <AccountCircle />
-      </IconButton>
+        {user ? (user.attributes && user.attributes.username ? <ProfileIcon /> : <Login />) : null}
       </div>
     </Toolbar>
 </AppBar>

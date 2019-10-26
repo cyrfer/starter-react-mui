@@ -4,13 +4,22 @@ import { CssBaseline } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import Header from './Header'
 
-const useStyles = makeStyles((/*theme*/) => {
-  const headerHeight = 64 // theme.mixins.toolbar[mediaQuery]
-  // [theme.breakpoints.up('sm')]: {
+const heightFn = theme => (accum, key) => {
+  const height = theme.mixins.toolbar[key]
 
   return {
+    ...accum,
+    [key]: {
+      height: `calc(100% - ${height})`,
+    }
+  }
+}
+
+const useStyles = makeStyles((theme) => {
+  return {
     root: {
-      height: `calc(100% - ${headerHeight}px)`
+      height: `calc(100% - ${theme.mixins.toolbar.minHeight}px)`,
+      ...(Object.keys(theme.mixins.toolbar).filter(key => key !== 'minHeight').reduce(heightFn(theme), {}))
     }
   }
 })
