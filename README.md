@@ -3,6 +3,9 @@ Save time by re-using boiler plate, rather than re-writing it.
 
 ## TODO:
 - follow steps in MUI that shows how to reduce the bundle size
+- debounce for serializing state to localstorage
+- add detail page for list items
+- side bar should show navigation back to `/` (home) when on another page
 
 ## Quick Run
 
@@ -11,7 +14,7 @@ Save time by re-using boiler plate, rather than re-writing it.
 ## via ssh
 git clone git@github.com:cyrfer/starter-react-mui.git your-app-name
 ## or via https
-https://github.com/cyrfer/starter-react-mui.git your-app-name`
+https://github.com/cyrfer/starter-react-mui.git your-app-name
 
 # Install dependencies
 cd your-app-name && npm install
@@ -19,6 +22,7 @@ cd your-app-name && npm install
 # Run local server
 npm start
 ```
+
 <p>
 <img src="./docs/home-signup.png" alt="home page signup" width="200"/>
 <img src="./docs/signup.png" alt="sign up" width="200"/>

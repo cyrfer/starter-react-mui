@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Typography } from '@material-ui/core'
+import { Button, Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
 import { Signup as SignupAction } from '../state/actions'
@@ -7,7 +7,7 @@ import { useContextState } from '../components/State'
 import Form from '../components/SimpleForm'
 import { signup } from '../services/backend'
 
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import config from '../config'
 
 const useStyles = makeStyles(theme => {
@@ -60,6 +60,7 @@ const SignupPage = () => {
     attributes={config.user.signUpAttributes}
     onChange={handleChange}
     onSubmit={onSubmit(dispatch, history, '/')} />
+  <Button variant="text" component={Link} to={'/signin'}>Already signed up? Sign in over here</Button>
 </Grid>
   )
 }

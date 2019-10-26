@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Typography } from '@material-ui/core'
+import { Button, Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
 import { Login as SigninAction } from '../state/actions'
@@ -7,7 +7,7 @@ import { useContextState } from '../components/State'
 import Form from '../components/SimpleForm'
 import { signin } from '../services/backend'
 
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import config from '../config'
 
 const useStyles = makeStyles(theme => {
@@ -16,6 +16,11 @@ const useStyles = makeStyles(theme => {
       flexWrap: 'nowrap',
       height: '100%',
       padding: `0 ${theme.spacing(2)}px`,
+    },
+    classes: {
+      button: {
+        margin: theme.spacing(2),
+      },
     },
     // resorting to css breakpoints because this was not working:
     // <Grid xs={12} sm={6} md={4} lg={3}>....</Grid>
@@ -78,6 +83,7 @@ const SignupPage = () => {
       onChange={handleChange}
       onSubmit={onSubmit(dispatch, history, '/')} />
   </Grid>
+  <Button variant="text" component={Link} to={'/signup'} className={classes.button}>Sign up as a different user</Button>
 </Grid>
   )
 }

@@ -19,6 +19,7 @@ const SignUpSplash = () => {
   <Grid item> <Typography variant="h1" align="center">YOUR APP</Typography> </Grid>
   <Grid item> <Typography variant="body1" align="center">You've come to the right place.</Typography> </Grid>
   <Grid item> <Button component={Link} to={'/signup'} variant="contained">SIGN UP NOW</Button> </Grid>
+  <Button variant="text" component={Link} to={'/signin'}>Already signed up? Sign in over here</Button>
 </Grid>
   )
 }
