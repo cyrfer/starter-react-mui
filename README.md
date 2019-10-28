@@ -6,6 +6,7 @@ Save time by re-using boiler plate, rather than re-writing it.
 - debounce for serializing state to localstorage
 - css bug: checkout quantity control should hug right edge of itemized rows.
 - js bug: checkout quantity controls should add and remove items without error.
+- manage account details when clicking on profile icon
 
 ## Quick Run
 
