@@ -4,8 +4,8 @@ Save time by re-using boiler plate, rather than re-writing it.
 ## TODO:
 - follow steps in MUI that shows how to reduce the bundle size
 - debounce for serializing state to localstorage
-- add detail page for list items
-- side bar should show navigation back to `/` (home) when on another page
+- css bug: checkout quantity control should hug right edge of itemized rows.
+- js bug: checkout quantity controls should add and remove items without error.
 
 ## Quick Run
 

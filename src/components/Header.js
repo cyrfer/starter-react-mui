@@ -1,14 +1,13 @@
 import React from 'react'
-import { Link, } from "react-router-dom"
-
-import MenuIcon from '@material-ui/icons/Menu'
-
-import { Avatar, } from '@material-ui/core'
+import { Link, useLocation, } from "react-router-dom"
+import { Menu as MenuIcon } from '@material-ui/icons'
 import { makeStyles, } from '@material-ui/core/styles'
 
 import {
   AppBar,
+  Avatar,
   Button,
+  Grid,
   IconButton,
   SwipeableDrawer,
   Toolbar,
@@ -16,6 +15,7 @@ import {
 
 import SideMenu from './SideMenu'
 import Brand from './Brand'
+import Cart from './Cart'
 
 import { useContextState } from './State'
 import { selectUser, selectUserNameFromUser, } from '../state/selections'
@@ -74,6 +74,7 @@ const Header = () => {
   const classes = useStyles()
   const [contextState, /*dispatch*/] = useContextState()
   const user = drillDown(contextState, selectUser)
+  const location = useLocation()
 
   const [state, setState] = React.useState({
     drawer: false,
@@ -94,10 +95,11 @@ const Header = () => {
       <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="open drawer" onClick={toggleDrawer(true)}>
           <MenuIcon />
       </IconButton>
-      <Brand />
-      <div className={classes.rightMenuIcons}>
+      <Grid item className={classes.title}> <Brand /> </Grid>
+      <Grid container direction="row" justify="flex-end" className={classes.rightMenuIcons}>
+        {location.pathname !== '/checkout' ? <Cart /> : null}
         {user ? (user.attributes && user.attributes.username ? <ProfileIcon /> : <Login />) : null}
-      </div>
+      </Grid>
     </Toolbar>
 </AppBar>
 <SwipeableDrawer open={state.drawer} onOpen={toggleDrawer(true)} onClose={toggleDrawer(false)} anchor="left">

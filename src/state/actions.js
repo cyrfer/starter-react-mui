@@ -4,6 +4,30 @@ export const ActionTypes = {
   LOGOUT: 'LOGOUT',
   SIGNUP: 'SIGNUP',
   PRODUCTS_UPDATE: 'PRODUCTS_UPDATE',
+  ADD_TO_CART: 'ADD_TO_CART',
+  REMOVE_FROM_CART: 'REMOVE_FROM_CART',
+  PAY: 'PAY',
+}
+
+export const PayAction = (payload) => {
+  return {
+    type: ActionTypes.PAY,
+    payload,
+  }
+}
+
+export const AddToCart = (payload) => {
+  return {
+    type: ActionTypes.ADD_TO_CART,
+    payload,
+  }
+}
+
+export const RemoveFromCart = (payload) => {
+  return {
+    type: ActionTypes.REMOVE_FROM_CART,
+    payload,
+  }
 }
 
 export const Logout = () => {

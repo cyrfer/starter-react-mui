@@ -12,6 +12,7 @@ import Home from './pages/Home'
 import Signin from './pages/Signin'
 import Signup from './pages/Signup'
 import NoMatch from './pages/NoMatch'
+import Checkout from './pages/Checkout'
 
 // import logo from './logo.svg'
 import './App.css'
@@ -25,6 +26,7 @@ import {
 
 import { useContextState } from './components/State'
 import config from './config'
+import ProductPage from './pages/Products'
 
 const saveState = (windowDevice, state) => {
   try {
@@ -37,11 +39,11 @@ const saveState = (windowDevice, state) => {
 
 function App() {
   const [state, ] = useContextState()
-  const { user } = state;
+  const { user, cart } = state;
 
   useEffect(() => {
-    saveState(window, {user})
-  }, [user])
+    saveState(window, {user, cart})
+  }, [user, cart])
 
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
 
@@ -65,8 +67,10 @@ function App() {
     <Layout title="your app">
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/products/:slug" component={ProductPage} />
         <Route exact path="/signin" component={Signin} />
         <Route exact path="/signup" component={Signup} />
+        <Route exact path="/checkout" component={Checkout} />
         <Route component={NoMatch} />
       </Switch>
     </Layout>

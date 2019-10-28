@@ -1,14 +1,17 @@
 import React from 'react'
-import { Link, useLocation } from "react-router-dom"
-
-import HomeIcon from '@material-ui/icons/Home';
-
+import { useLocation } from "react-router-dom"
 import { makeStyles, } from '@material-ui/core/styles'
+import {
+  AccountCircleOutlined,
+  Home as HomeIcon,
+  LockOpenOutlined,
+  ShoppingCart,
+  FavoriteBorderOutlined
+} from '@material-ui/icons'
 
 import {
   Grid,
   Hidden,
-  IconButton,
   Typography,
 } from '@material-ui/core'
 
@@ -39,30 +42,33 @@ const useStyles = makeStyles(theme => ({
       display: 'block',
     },
   },
+
   toolbar: {
     justifyContent: 'space-between',
   }
 }))
 
-const routeBrands = {
-  '/': {icon: <HomeIcon />, text: 'Dashboard'},
-  '/signin': {icon: <HomeIcon />, text: 'Dashboard'},
-  '/signup': {icon: <HomeIcon />, text: 'Dashboard'},
-}
+const routeBrands = [
+  {route: /^\/$/, icon: <HomeIcon />, text: 'Home'},
+  {route: /^\/checkout$/, icon: <ShoppingCart />, text: 'Checkout'},
+  {route: /^\/signin$/, icon: <AccountCircleOutlined />, text: 'Sign In'},
+  {route: /^\/signup$/, icon: <LockOpenOutlined />, text: 'Sign Up'},
+  {route: /^\/products\/.*$/, icon: <FavoriteBorderOutlined />, text: 'Products'}
+]
 
 const Brand = () => {
   const classes = useStyles()
   const location = useLocation()
-  let brand = routeBrands[location.pathname]
+  let brand = routeBrands.find(rb => rb.route.test([location.pathname]))
   if (!brand) {
     console.error('could not find brand route, ', location.pathname)
     brand = {text: 'Missing'}
   }
 
   return (
-<Grid container direction="row" className={classes.container}>
-  {!brand.icon ? null : <Hidden smUp> <IconButton className={classes.icon}> {brand.icon} </IconButton> </Hidden>}
-  <Hidden xsDown> <Typography className={classes.title} variant="h6" noWrap component={Link} to={'/'}> {brand.text} </Typography> </Hidden>
+<Grid container direction="row" wrap="nowrap" alignItems="center" className={classes.container}>
+  {!brand.icon ? null : <Hidden smUp> {brand.icon} </Hidden>}
+  <Typography className={classes.title} variant="h6" noWrap> {brand.text} </Typography>
 </Grid>
   )
 }

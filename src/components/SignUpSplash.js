@@ -7,6 +7,9 @@ const useStyles = makeStyles(theme => {
   return {
     root: {
       height: '100%',
+    },
+    button: {
+      margin: theme.spacing(2),
     }
   }
 })
@@ -18,8 +21,8 @@ const SignUpSplash = () => {
 <Grid container className={classes.root} direction="column" justify="center" alignItems="center">
   <Grid item> <Typography variant="h1" align="center">YOUR APP</Typography> </Grid>
   <Grid item> <Typography variant="body1" align="center">You've come to the right place.</Typography> </Grid>
-  <Grid item> <Button component={Link} to={'/signup'} variant="contained">SIGN UP NOW</Button> </Grid>
-  <Button variant="text" component={Link} to={'/signin'}>Already signed up? Sign in over here</Button>
+  <Grid item> <Button className={classes.button} component={Link} to={'/signup'} variant="contained">SIGN UP NOW</Button> </Grid>
+  <Button className={classes.button} variant="text" component={Link} to={'/signin'}>Already signed up? Sign in over here</Button>
 </Grid>
   )
 }
