@@ -15,7 +15,7 @@ Save time by re-using boiler plate, rather than re-writing it.
 ## via ssh
 git clone git@github.com:cyrfer/starter-react-mui.git your-app-name
 ## or via https
-https://github.com/cyrfer/starter-react-mui.git your-app-name
+git clone https://github.com/cyrfer/starter-react-mui.git your-app-name
 
 # Install dependencies
 cd your-app-name && npm install
