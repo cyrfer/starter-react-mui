@@ -42,6 +42,7 @@ Adds to CRA:
 ## Recipe To create yourself
 
 Grab dependencies:
+- `npx create-react-app my-app && cd my-app`
 - `npm i -S @material-ui/core @material-ui/icons typeface-roboto react-router-dom`
 - `npm i -S deepdown`
 
